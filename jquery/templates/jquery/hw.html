@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#sumbtn').click(function(){
+                var x = parseInt($('#value1').val());
+                var y = parseInt($('#value2').val());
+                var z = x + y;
+                console.log('sum', z);
+                $('#result').text(z);
+            });
+            $('#newclbtn').click(function(){
+                $('#color').css('backgroundColor','blue');
+            });
+            $('#prvclbtn').click(function(){
+                $('#color').css('backgroundColor','grey');
+            });
+            $('#hidebtn').click(function(){
+                $('body').css('display','none')
+            });
+        });
+
+        $(document).ready (function() {
+        $('#keyword').keyup(function() {
+            var keyword = $(this).val();
+            console.log('success', keyword);
+            $.ajax({
+                type: "POST",
+                url: '{% url "get_data" %}',
+                data: {"text": keyword},
+                success: function(msg) {
+                    $('#txtHint').text(msg.result);
+                }
+            });
+            // console.log('success', true);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to my project</h1>
+<div id="body">
+    <!-- <form >
+        <label for="keyword">Search Name:</label>
+        <input type="text" id="keyword" name="keyword" />
+    </form>
+    <div>
+        <h3>Suggestion: <span id="txtHint"></span></h3>
+    </div> -->
+
+    <div id="color" style="height: 100px; width: 200px; background-color: grey; text-align: center;">
+        <button type="button" id="newclbtn">New Color</button>
+        <button type="button" id="prvclbtn">Prev Color</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <label for="value1">Value 1:</label>
+        <input type="number" id="value1" name="value1" />
+        <label for="value2">Value 2:</label>
+        <input type="number" id="value2" name="value2" />
+        <br>
+        <h3>Total: <span id="result"></span></h3>
+        <button type="button" id="sumbtn">Sum</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <button type="button" id="hidebtn">Hide Screen</button>
+    </div>
+
+</div>
+
+</body>
+
+</html>

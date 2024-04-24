@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Country List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        
+        $(document).ready(function(){
+
+            $('#addbtn').click(function(){
+                let x = $('#name').val().toLowerCase();
+                let titleX = x[0].toUpperCase() + x.substr(1);
+                console.log('country:', titleX);
+                var newBtn = $('<button type="button"></button>').text('X').attr('id','removebtn').css('margin-left', '10px');
+                var newCountry = $("<li></li>").css('margin', '10px').text(titleX).append(newBtn);
+                $('#myList').append(newCountry);
+                console.log('Status:', 'done');
+            });
+        });
+
+        // $(document).ready(function(){
+        //     $("#myList li button").on("click", function(){
+        //         $(this).parent().remove();
+        //     });
+
+
+        $(document).ready(function(){
+            $('#myList').on('click', '#removebtn', function(){
+                $(this).parent().remove();
+            });
+        });
+        
+
+        // });
+        // $(document).delegate("li button", "click", function() {
+		//  $(this).parent().remove();
+		// });
+
+        
+        
+    </script>
+</head>
+<body style="text-align: center; margin: 0;">
+    
+    <div>
+        <form style="padding: 50px; margin: 100px auto; border: 5px solid black; width: 50%;" id="form">
+            <div style="margin-bottom: 10px;">
+                <label for="name">Country Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <button type="button" id="addbtn">Add</button>
+        </form>
+    </div>
+    
+    <div style="text-align: left;">
+    <div>
+        <h2>Country List</h2>
+    </div>
+
+    <!-- <div>
+        <table id="myTable" style="border: 1px solid black;">
+            <thead>
+            <th>Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for country in c_list %}
+            <tr style="border: 1px solid black;">
+                <td> {{country}} </td>
+                <td><button type="button" id="tbtn">X</button></td>
+            </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+    </div> -->
+
+    <div>
+        <ul id="myList">
+            {% for country in c_list %}
+                <li style="margin: 10px;">{{ country }}<button id="removebtn" type="button" style="margin-left: 10px;">X</button></li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+</body>
+</html>
+
+
+

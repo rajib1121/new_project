@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Demo</title>
+    
+  </head>
+  <body id="body" style="text-align: center;">
+    <div style="margin: 300px;">
+        
+        <div style="margin: 60px;">
+            <div id="modal-body" style="padding: 30px; background-color: lightgrey; border: 2px solid black;">
+                <div>
+                  <h3>Sign Up Form</h3>
+                </div>
+                <div>
+                    <form name="form">
+                  <div style="padding: 10px;">
+                    <label style="padding: 10px;" for="username">Username:</label>
+                    <input style="margin-left: 10px;" type="text" name="username" id="username">
+                  </div>
+                  <div style="padding: 10px;">
+                    <label style="padding: 10px;" for="pwd">Password:</label>
+                    <input style="margin-left: 10px;" type="password" name="pwd" id="pwd">
+                  </div>
+                  <div style="padding: 10px;">
+                    <label style="padding: 10px;" for="email">Email:</label>
+                    <input style="margin-left: 20px;" type="email" name="email" id="email">
+                  </div>
+                  <button type="button" onclick="getDetail()">Signup</button>
+                </form>
+                </div>
+
+            </div>
+            <div id="detail" style="display: none;">
+                <h4 id="user"></h4>
+                <h4 id="emailid"></h4>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+
+<script>
+    function getDetail() {
+        var x = document.forms['form']['username'].value;
+        var y = document.forms['form']['pwd'].value;
+        var z = document.forms['form']['email'].value;
+        console.log('username', x);
+        console.log('pwd', y);
+        console.log('email', z);
+        // document.getElementById('detail').style.display = 'block';
+        // document.getElementById('user').innerHTML = "Username: " + x;
+        // document.getElementById('emailid').innerHTML = "Email: " + z;
+        alert("Your username is "+x+". Your e-mail is "+z);
+
+    }
+    
+
+
+    
+</script>

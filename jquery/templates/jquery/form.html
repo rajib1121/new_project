@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#signup').click(function(){
+                var username = $('#username').val();
+                var pwd = $('#pwd').val();
+                var email = $('#email').val();
+                alert('Your username is ' + username + ' and email address is ' + email + '.');
+                $('#user').text('Username: ' + username);
+                $('#emailid').text('Email: ' + email);
+                $('#detail').css('display', 'block');
+            });
+        });
+    </script>
+    
+  </head>
+  <body id="body" style="text-align: center;">
+    <div style="margin: 300px;">
+        
+        <div style="margin: 60px;">
+            <div id="modal-body" style="padding: 30px; background-color: lightgrey; border: 2px solid black;">
+                <div>
+                  <h3>Sign Up Form</h3>
+                </div>
+                <div>
+                    <form name="form">
+                  <div style="padding: 10px;">
+                    <label style="padding: 10px;" for="username">Username:</label>
+                    <input style="margin-left: 10px;" type="text" name="username" id="username">
+                  </div>
+                  <div style="padding: 10px;">
+                    <label style="padding: 10px;" for="pwd">Password:</label>
+                    <input style="margin-left: 10px;" type="password" name="pwd" id="pwd">
+                  </div>
+                  <div style="padding: 10px;">
+                    <label style="padding: 10px;" for="email">Email:</label>
+                    <input style="margin-left: 20px;" type="email" name="email" id="email">
+                  </div>
+                  <button type="button" id="signup">Signup</button>
+                </form>
+                </div>
+
+            </div>
+            <div id="detail" style="display: none;">
+                <h4 id="user"></h4>
+                <h4 id="emailid"></h4>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+
+

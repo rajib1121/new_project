@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modal Demo</title>
+    
+  </head>
+  <body id="body" style="text-align: center;">
+    <div style="margin: 300px;">
+        <div style="margin: 30px;">
+            <button type="button" id="activate">Click to Signin</button>
+        </div>
+
+        <div style="margin: 60px;">
+            <div id="modal-body" style="padding: 30px; background-color: white; border: 2px solid black; display: none;">
+                <div>
+                  <h3>Login Form</h3>
+                </div>
+                <div>
+                  <div style="padding: 10px;">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username">
+                  </div>
+                  <div style="padding: 10px;">
+                    <label for="pwd">Password:</label>
+                    <input type="password" name="pwd" id="pwd">
+                  </div>
+                  <button type="button">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+
+<script>
+    document.getElementById('activate').onclick = aModal;
+    function aModal() {
+        console.log('ok', 134);
+        document.getElementById('body').style.backgroundColor = 'gray';
+        document.getElementById('activate').style.display = 'none';
+        document.getElementById('modal-body').style.display = 'block';
+    }
+</script>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Country List</title>
+</head>
+<body style="text-align: center; margin: 0;">
+    
+    <div>
+        <form style="padding: 50px; margin: 100px auto; border: 5px solid black; width: 50%;" id="form">
+            <div style="margin-bottom: 10px;">
+                <label for="name">Country Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <button type="button" onclick="addItem()">Add</button>
+        </form>
+    </div>
+    
+    <div style="text-align: left;">
+    <div>
+        <h2>Country List</h2>
+    </div>
+
+    <!-- <div>
+        <table id="myTable" style="border: 1px solid black;">
+            <thead>
+            <th>Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for country in c_list %}
+            <tr style="border: 1px solid black;">
+                <td> {{country}} </td>
+                <td><button type="button" id="tbtn">X</button></td>
+            </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+    </div> -->
+
+    <div>
+        <ul id="myList">
+            {% for country in c_list %}
+                <li style="margin: 10px;">{{ country }}<button id="btn" type="button" style="margin-left: 10px;">X</button></li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+    // const list = document.getElementById('myList')
+    // list.addEventListener('click', function(e) {
+    //     if (e.target.matches('#btn')) {
+    //         e.target.parentElement.remove()
+    //     };
+    // });
+    document.getElementById('myList').onclick = removeItem1;
+    function removeItem1(e) {
+        if (e.target.matches('#btn')) {
+            let x = e.target.parentElement.firstChild;
+            console.log('country', x)
+            e.target.parentElement.remove();
+        }
+
+    }
+
+    function addItem() {
+        var x = document.forms['form']['name'].value;
+        console.log('country', x);
+        if (x == "") {
+            alert('Please type a country name');
+            return;
+        }
+        else {
+        const liNode = document.createElement('li');
+        const btnNode = document.createElement('button');
+        const liTxtNode = document.createTextNode(x);
+        const btnTxtNode = document.createTextNode('X');
+
+        liNode.appendChild(liTxtNode);
+        liNode.style.margin = '10px';
+
+        btnNode.appendChild(btnTxtNode);
+        btnNode.style.marginLeft = '10px';
+        btnNode.id = 'btn';
+        btnNode.type = 'button';
+
+        liNode.appendChild(btnNode);
+        
+        document.getElementById('myList').appendChild(liNode);
+        document.getElementById('name').value = '';
+        alert('Country ' + x + ' added successfully.')
+    }
+    }
+
+    // document.getElementById('myTable').onclick = removeItem;
+    // function removeItem(i) {
+    //     if (i.target.matches('#tbtn')) {
+    //         i.target.parentElement.parentElement.remove();
+    //     }
+    // }
+
+</script>

@@ -42,10 +42,11 @@
 
 
 
-<script src="{% static 'js/main.js' %}"></script>
+<!-- <script src="{% static 'js/main.js' %}"></script> -->
 
 <script>
     
+    // SUM CALCULATION
     function mySum() {
         let x = parseInt(document.getElementById('value1').value);
         let y = parseInt(document.getElementById('value2').value);
@@ -56,10 +57,39 @@
         z;
     }
     
+    // CLEAR SCREEN
 
     function clearScreen() {
         document.getElementById('body').style.display =
         'none'
+    }
+
+    // Search Hint AJAX
+    function myFun(keyword) {
+        console.log('keyword', keyword);
+        if (keyword.length == 0) {
+            document.getElementById('txtHint').innerHTML = '';
+            return;
+        } else {
+            const xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+            document.getElementById('txtHint').innerHTML = this.responseText;
+        }
+        xmlhttp.open('GET', 'result/'+ keyword);
+        xmlhttp.send();
+        }
+    }
+
+    // Background Color Change JAVA
+
+    function newColor() {
+        document.getElementById('color').style.backgroundColor =
+        'blue';
+    }
+
+    function prevColor() {
+        document.getElementById('color').style.backgroundColor =
+        'grey';
     }
 
 </script>
